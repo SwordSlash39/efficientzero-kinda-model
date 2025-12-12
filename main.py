@@ -342,13 +342,13 @@ def train_data(epochs=1, batch_size=256):
 if __name__ == '__main__':
     
     # First try
-    # gen_rand_data(1500, epsilon=0.15)
-    # gen_rand_data(1000, epsilon=0)
-    # train_data(epochs=10, batch_size=1024)
+    gen_rand_data(1500, epsilon=0.15)
+    gen_rand_data(1000, epsilon=0)
+    train_data(epochs=10, batch_size=1024)
     
     # Continue training
-    model.load_checkpoint("bomb.pth")
-    gen_data(2500)
+    # model.load_checkpoint("bomb.pth")
+    # gen_data(2500)
     try:
         for i in range(5000):
             print(f"EPOCH {i+1}")
@@ -357,4 +357,5 @@ if __name__ == '__main__':
             print(f"Avg loss: {avg_loss}")
     except KeyboardInterrupt:
         pass
+
     model.save_checkpoint("bomb.pth")
