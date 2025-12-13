@@ -83,6 +83,7 @@ def gen_rand_data(steps=256, epsilon=EPSILON):
     curr_obv = change_observation(observation)
     episode_obs.append(curr_obv)
     for k in tqdm(range(steps)):
+        curr_obv = change_observation(observation)
         action = get_random_legal_move(observation)
         if has_illegal_moves(observation):
             if random.random() < epsilon:
@@ -359,3 +360,4 @@ if __name__ == '__main__':
         pass
 
     model.save_checkpoint("bomb.pth")
+
