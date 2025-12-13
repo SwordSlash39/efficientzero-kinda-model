@@ -11,3 +11,7 @@ value: value net trained off temporal difference errors with another target valu
 Special stuff:<br>
 Value net is $Q(s, a)$ for Q values, so model can train on any data even random data<br>
 Parallised MCTS search: parallel_mcts function in main_model to run mcts on numerous batches at once all on the gpu<br>
+
+Setup:
+needs torch
+also `pip install gymnasium-connect-four`
