@@ -250,8 +250,8 @@ def train_data(epochs=1, batch_size=256):
         loss_policy_vec = crossentropyloss_none(policy_logits, target_policy_output.detach().clone())
 
         # get value loss
-        value_output = model.value_net(curr_latents, action_data)
-        next_observation_actions = torch.argmax(model.eval_policy(next_latents), dim=1) #[batch] of next actions
+        value_output = model.value_net(curr_latents.detach(), action_data)
+        next_observation_actions = torch.argmax(model.eval_policy(next_latents.detach()), dim=1) #[batch] of next actions
         # Negative cos 0 sum game
         target_value = reward_data + (~done_data) * GAMMA * -model.target_value_net(next_latents, next_observation_actions).squeeze()
         loss_value_vec = mseloss_none(value_output, target_value.unsqueeze(1).detach()).squeeze(-1)
@@ -360,4 +360,5 @@ if __name__ == '__main__':
         pass
 
     model.save_checkpoint("bomb.pth")
+
 
