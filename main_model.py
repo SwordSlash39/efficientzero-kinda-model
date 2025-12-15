@@ -372,7 +372,3 @@ class MainModel(nn.Module):
     @torch.inference_mode()
     def eval_worldencoder(self, x):
         return self.worldencoder(x)
-    
-    @torch.inference_mode()
-    def eval_policy(self, x):
-        return self.policy(x)
